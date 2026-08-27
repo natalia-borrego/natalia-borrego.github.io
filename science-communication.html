@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Science Communication & Popular Press | Natalia Borrego</title>
+<meta name="description" content="Science communication, broadcasting, popular writing and media work by Natalia Borrego.">
+<style>
+:root{
+  --forest:#29483A;
+  --forest-deep:#20372D;
+  --ivory:#F6F2E9;
+  --paper:#FCFAF5;
+  --charcoal:#252824;
+  --sand:#D8CDB8;
+  --ochre:#A8753E;
+  --muted:#6E716B;
+  --line:rgba(37,40,36,.16);
+  --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--charcoal);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.62;
+}
+a{color:inherit}
+img{display:block;width:100%;object-fit:cover}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.08}
+h1{margin:0;font-size:clamp(3.3rem,7vw,6.8rem);letter-spacing:-.04em}
+h2{margin:0 0 18px;font-size:clamp(2.25rem,4.5vw,4.5rem);letter-spacing:-.035em}
+h3{margin:0 0 10px;font-size:1.55rem}
+p{margin-top:0}
+.eyebrow{
+  margin:0 0 14px;font-size:.78rem;letter-spacing:.16em;
+  font-weight:800;text-transform:uppercase;
+}
+.eyebrow.dark{color:var(--forest)}
+.eyebrow.light{color:var(--sand)}
+.site-notice{
+  background:var(--ochre);color:white;text-align:center;padding:11px 18px;
+  font-size:.9rem;font-weight:700;
+}
+.site-header{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;gap:24px;
+  padding:18px max(28px,calc((100vw - var(--max))/2));
+  background:rgba(246,242,233,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.brand{
+  font-family:Georgia,"Times New Roman",serif;font-size:1.3rem;
+  font-weight:700;text-decoration:none;white-space:nowrap;
+}
+nav{display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end}
+nav a{text-decoration:none;font-size:.88rem;font-weight:700}
+nav a:hover,nav a[aria-current="page"]{color:var(--ochre)}
+.section{
+  width:min(var(--max),calc(100% - 56px));margin:0 auto;padding:96px 0;
+}
+.section-heading{max-width:850px;margin-bottom:48px}
+.section-heading>p:last-child{max-width:790px;font-size:1.08rem}
+.button{
+  display:inline-block;padding:12px 18px;border:1px solid currentColor;
+  text-decoration:none;font-size:.9rem;font-weight:800;
+}
+.button-dark{background:var(--forest);border-color:var(--forest);color:white}
+.button-light{background:var(--ivory);border-color:var(--ivory);color:var(--forest-deep)}
+.button-outline{color:var(--forest);border-color:var(--forest)}
+.button-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+/* Home hero */
+.hero{
+  position:relative;min-height:78vh;display:grid;align-items:end;
+  overflow:hidden;background:var(--forest-deep);
+}
+.hero-image,.hero-overlay{position:absolute;inset:0;height:100%}
+.hero-image{object-position:center;filter:brightness(1.04)}
+.hero-overlay{
+  background:
+   linear-gradient(90deg,rgba(20,28,23,.75),rgba(20,28,23,.26) 56%,rgba(20,28,23,.07)),
+   linear-gradient(0deg,rgba(20,28,23,.60),transparent 55%);
+}
+.hero-copy{
+  position:relative;z-index:2;width:min(790px,calc(100% - 56px));
+  margin:0 max(28px,calc((100vw - var(--max))/2));padding:105px 0 72px;color:white;
+}
+.hero-question{
+  margin:24px 0 12px;max-width:760px;font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.6rem,3vw,2.7rem);
+}
+.hero-intro{max-width:715px;margin:0;font-size:1.08rem}
+.affiliations{margin:34px 0 0;font-size:.85rem;color:rgba(255,255,255,.84)}
+
+/* Internal page hero */
+.page-hero{
+  background:var(--forest-deep);color:white;
+  padding:105px max(28px,calc((100vw - var(--max))/2)) 78px;
+}
+.page-hero-inner{max-width:900px}
+.page-hero h1{margin-bottom:20px}
+.page-hero p{max-width:790px;font-size:1.12rem;color:rgba(255,255,255,.84)}
+
+/* Trajectory cards */
+.trajectory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.trajectory-card{padding:28px 0 4px;border-top:2px solid var(--forest)}
+.trajectory-number{
+  display:block;margin-bottom:34px;color:var(--muted);font-size:.74rem;
+  font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+}
+.trajectory-bridge{
+  margin-top:44px;padding:24px 28px;background:var(--ivory);
+  border-left:3px solid var(--ochre);max-width:920px;
+  font-family:Georgia,"Times New Roman",serif;font-size:1.16rem;line-height:1.5;
+}
+.section-cta{margin-top:34px}
+
+/* Teaching trajectory */
+.teaching-trajectory{border-top:1px solid var(--line)}
+.teaching-card{padding:28px;background:white;border:1px solid var(--line);border-top:3px solid var(--forest)}
+.teaching-card p{color:var(--charcoal)}
+
+/* Field notes preview */
+.notes-section{border-top:1px solid var(--line)}
+.notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.note-card{background:white;border:1px solid var(--line)}
+.note-card img{aspect-ratio:16/10}
+.note-card>div{padding:22px}
+.note-meta{
+  margin:0 0 8px;font-size:.76rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--forest)
+}
+.note-card a{
+  display:inline-block;margin-top:10px;color:var(--forest);font-weight:800;text-decoration:none
+}
+
+/* Current questions */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.project-card{
+  display:flex;flex-direction:column;min-height:100%;padding:28px;background:white;
+  border:1px solid var(--line);border-top:3px solid var(--forest)
+}
+.project-status{
+  margin:0 0 7px;color:var(--ochre);font-size:.75rem;font-weight:800;
+  letter-spacing:.11em;text-transform:uppercase
+}
+.project-role{margin:0 0 16px;color:var(--muted);font-size:.78rem;font-style:italic}
+.project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:16px}
+.project-tags span{
+  padding:6px 8px;background:var(--ivory);border:1px solid var(--line);
+  color:var(--muted);font-size:.72rem;font-weight:700
+}
+.project-link{
+  display:inline-block;margin-top:22px;color:var(--forest);font-weight:800;text-decoration:none
+}
+.project-link:hover{text-decoration:underline}
+.collaborative-project-card{background:var(--ivory)}
+
+/* Study systems */
+.systems-section{border-top:1px solid var(--line)}
+.system-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.system-card{background:white;border:1px solid var(--line)}
+.system-card img{aspect-ratio:4/3}
+.system-card>div{padding:22px}
+.system-meta{
+  margin:0 0 8px;color:var(--ochre);font-size:.74rem;font-weight:800;
+  letter-spacing:.11em;text-transform:uppercase
+}
+
+/* Research approach */
+.approach-section{border-top:1px solid var(--line)}
+.approach-field-grid{
+  display:grid;grid-template-columns:.95fr 1.05fr;gap:62px;align-items:center
+}
+.approach-image img{min-height:620px;height:100%}
+.approach-kicker{
+  margin:0 0 10px;color:var(--forest);font-size:.76rem;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase
+}
+.approach-copy h3,.exsitu-copy h3{font-size:clamp(2rem,3.4vw,3.2rem);margin-bottom:18px}
+.method-list{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+.method-list span{
+  padding:9px 12px;border:1px solid var(--line);background:var(--ivory);font-size:.9rem
+}
+.exsitu-section{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:62px;align-items:start;
+  margin-top:86px;padding-top:70px;border-top:1px solid var(--line)
+}
+.exsitu-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.exsitu-gallery figure{margin:0;background:white;border:1px solid var(--line)}
+.exsitu-gallery figure:first-child{grid-column:1/-1}
+.exsitu-gallery img{aspect-ratio:4/3}
+.exsitu-gallery figure:first-child img{aspect-ratio:16/9}
+.exsitu-gallery figcaption{padding:11px 13px 13px;color:var(--muted);font-size:.78rem}
+
+/* Teaching page */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.content-card{padding:28px;background:white;border:1px solid var(--line)}
+.content-card h3{font-size:1.8rem}
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.case-card{padding:24px;background:white;border:1px solid var(--line);border-top:3px solid var(--forest)}
+.case-meta{
+  margin:0 0 8px;color:var(--ochre);font-size:.74rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase
+}
+.outcomes{margin-top:12px;color:var(--muted);font-size:.92rem}
+.teaching-list{display:grid;gap:14px}
+.teaching-list article{padding:18px 0;border-top:1px solid var(--line)}
+.teaching-list article:first-child{border-top:0;padding-top:0}
+.teaching-list strong{display:block}
+.teaching-list span{display:block;color:var(--muted)}
+
+/* Science communication */
+.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.media-card{padding:28px;background:white;border:1px solid var(--line)}
+.media-card h3{font-size:1.9rem}
+.media-list{list-style:none;padding:0;margin:18px 0 0}
+.media-list li{padding:13px 0;border-top:1px solid var(--line)}
+.media-list li:first-child{border-top:0}
+.media-year{color:var(--ochre);font-weight:800;margin-right:8px}
+.feature-band{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;
+  background:var(--ivory);padding:36px;border:1px solid var(--line)
+}
+.feature-band img{aspect-ratio:4/3}
+
+/* CV */
+.cv-shell{display:grid;grid-template-columns:320px 1fr;gap:32px;align-items:start}
+.cv-side{
+  position:sticky;top:105px;padding:26px;background:var(--ivory);border:1px solid var(--line)
+}
+.cv-viewer{
+  width:100%;min-height:1100px;border:1px solid var(--line);background:white
+}
+
+/* Footer */
+footer{
+  padding:36px max(28px,calc((100vw - var(--max))/2));
+  background:var(--charcoal);color:rgba(255,255,255,.72);font-size:.82rem;
+  display:flex;justify-content:space-between;gap:20px
+}
+footer p{margin:0}
+
+@media(max-width:900px){
+  .site-header{align-items:flex-start;flex-direction:column}
+  nav{justify-content:flex-start;gap:14px 18px}
+  .trajectory-grid,.notes-grid,.projects-grid,.system-grid,.approach-field-grid,
+  .exsitu-section,.two-col,.case-grid,.media-grid,.feature-band,.cv-shell{
+    grid-template-columns:1fr
+  }
+  .approach-image img{min-height:0;aspect-ratio:4/3}
+  .cv-side{position:static}
+  .cv-viewer{min-height:850px}
+  footer{flex-direction:column}
+}
+@media(max-width:580px){
+  .section{width:calc(100% - 36px);padding:72px 0}
+  .site-header{padding-left:18px;padding-right:18px}
+  .hero-copy{width:calc(100% - 36px);margin-left:18px;margin-right:18px}
+  .page-hero{padding-left:18px;padding-right:18px}
+  h1{font-size:3.5rem}
+  .hero{min-height:82vh}
+  .exsitu-gallery{grid-template-columns:1fr}
+  .exsitu-gallery figure:first-child{grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="site-notice">
+  This website is currently under construction. Please check back soon for updates.
+</div>
+
+
+<header class="site-header">
+  <a class="brand" href="index.html">Natalia Borrego</a>
+  <nav aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a href="teaching-mentorship.html">Teaching &amp; Mentorship</a>
+    <a href="science-communication.html" aria-current="page">Science Communication</a>
+    <a href="field-notes.html">Field Notes</a>
+    <a href="cv.html">CV</a>
+  </nav>
+</header>
+
+
+<main>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow light">Science communication &amp; popular press</p>
+    <h1>Science beyond journals.</h1>
+    <p>
+      I communicate animal behavior, cognition, and carnivore ecology through books,
+      broadcasting, public talks, documentaries, expert commentary, and long-form profiles.
+      Public-facing work is part of how I connect the questions that motivate research with
+      the wider fascination people have with animal societies.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="feature-band">
+    <img src="assets/images/field-notes/2026-mpg-profile.jpg" alt="Max Planck Forschung profile">
+    <div>
+      <p class="eyebrow dark">Featured profile · 2026</p>
+      <h2><em>Max Planck Forschung</em></h2>
+      <p>
+        A six-page <em>Besuch bei</em> featured-scientist profile by Nora Lessing follows
+        my research trajectory, lion behavior, field methods, and collaborative research in Africa.
+      </p>
+      <a class="button button-dark" href="field-notes.html#mpg-profile">Read the Field Note →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--line)">
+  <div class="section-heading">
+    <p class="eyebrow dark">Writing &amp; profiles</p>
+    <h2>Long-form science for broad audiences.</h2>
+  </div>
+
+  <div class="media-grid">
+    <article class="media-card">
+      <h3>Books &amp; public-facing writing</h3>
+      <ul class="media-list">
+        <li><span class="media-year">2025</span><strong>“The Most Charismatic of Cats”</strong> — chapter in <em>The Last Lions</em>, Smithsonian Books.</li>
+        <li><span class="media-year">2024</span><strong><em>Animal Minds: What Are They Thinking?</em></strong> — research featured / featured scientist, Orca children's book.</li>
+        <li><span class="media-year">2021</span><strong><em>Aesop's Animals: The Science Behind the Fables</em></strong> — scientific consultant, Bloomsbury Sigma.</li>
+        <li><span class="media-year">2018</span><strong><em>The Lion's Tale</em></strong> — scientific consultant, DK / Penguin Random House children's book.</li>
+      </ul>
+    </article>
+
+    <article class="media-card">
+      <h3>Research featured &amp; expert commentary</h3>
+      <ul class="media-list">
+        <li><span class="media-year">2025</span>MDR — expert interview on tiger-cub mortality at Leipzig Zoo.</li>
+        <li><span class="media-year">2025</span>SÜDKURIER — expert interview on Zurich Zoo's tiger and lion husbandry concept.</li>
+        <li><span class="media-year">2022</span><em>Smithsonian Magazine</em> — research coverage on oxytocin and lion social behavior.</li>
+        <li><span class="media-year">2022</span><em>The Atlantic</em> — expert interview on honey badger behavior.</li>
+        <li><span class="media-year">2022</span><em>Slate</em> — expert interview on lion behavior and the film <em>Beast</em>.</li>
+        <li><span class="media-year">2018</span>National Geographic Online News — scientific consultant, “Do Big Cats Get Hairballs?”</li>
+        <li><span class="media-year">2016</span><em>Scientific American</em> — research coverage, “Lions are the brainiest of the Big Cats.”</li>
+        <li><span class="media-year">2016</span><em>Science</em> — research coverage, “Good social skills make animals smarter.”</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--line)">
+  <div class="section-heading">
+    <p class="eyebrow dark">Broadcast &amp; presenting</p>
+    <h2>On screen and behind the science.</h2>
+  </div>
+
+  <div class="media-grid">
+    <article class="media-card">
+      <h3>Presenting</h3>
+      <ul class="media-list">
+        <li><span class="media-year">2021</span><strong><em>Animal IQ</em></strong> — presenter and co-host, eight-episode web series, PBS Nature / PBS TerraNova.</li>
+        <li><span class="media-year">2019</span><strong><em>Wicked Weasels</em></strong> — TV presenter and scientific consultant, BBC / PBS.</li>
+        <li><span class="media-year">2018</span><strong><em>Big Cats</em></strong> — TV presenter and scientific consultant, BBC / PBS.</li>
+        <li><span class="media-year">2016</span><strong><em>Wild Dogs</em></strong> — presenter and scientific consultant, Offspring Films for Sky 1.</li>
+        <li><span class="media-year">2015</span><strong><em>Killer IQ: Predator Challenge</em></strong> and <strong><em>Killer IQ: Predator Games</em></strong> — TV presenter and scientific consultant, Smithsonian Channel.</li>
+      </ul>
+    </article>
+
+    <article class="media-card">
+      <h3>Scientific consulting &amp; educational media</h3>
+      <ul class="media-list">
+        <li><span class="media-year">2021</span>Wildscreen Network Festival — panelist, “Understanding Science Communication when Filming/Photographing Wildlife.”</li>
+        <li><span class="media-year">2021</span>Reddit AskScience AMA — <em>Animal IQ</em> question-and-answer session.</li>
+        <li><span class="media-year">2020</span><em>Earth at Night</em> — scientific consultant for African lion episode, Apple TV+ / Offspring Films.</li>
+        <li><span class="media-year">2019</span>Franklin Park Zoo, Boston — scientific consultant, “Zoo Brains” poster exhibit.</li>
+        <li><span class="media-year">2019</span><em>The Zoo</em>, Animal Planet — student research featured.</li>
+        <li><span class="media-year">2021</span>BBC, <em>Chris Packham's Animal Einsteins</em>, Episode 4 “Social Networkers” — research featured.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <p>© 2026 Natalia Borrego · Behavioral ecology · Wildlife ecology · Animal behavior</p>
+  <p>Max Planck Institute of Animal Behavior · University of Konstanz · University of Minnesota Lion Center</p>
+</footer>
+
+</body>
+</html>
