@@ -297,25 +297,56 @@ footer p{margin:0}
   </div>
 </section>
 
-<section class="section">
-  <div class="cv-shell">
-    <aside class="cv-side">
-      <p class="eyebrow dark">Download</p>
-      <h3>Full academic CV</h3>
-      <p>
-        The public website uses my research-focused academic CV as the most complete
-        general record of my work.
-      </p>
-      <a class="button button-dark"
-         href="assets/Natalia_Borrego_CV_2026.pdf"
-         download>Download CV (PDF) →</a>
-    </aside>
+<!-- =========================================================
+     SECTION: CV VIEWER
+     ========================================================= -->
+<section class="section" id="cv">
 
-    <iframe class="cv-viewer"
-            src="assets/Natalia_Borrego_CV_2026.pdf"
-            title="Natalia Borrego academic CV"></iframe>
+  <div style="
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:24px;
+  ">
+
+    <a
+      href="Natalia_Borrego_CV_2026.pdf"
+      download
+      class="button button-dark">
+      Download CV (PDF) →
+    </a>
+
   </div>
+
+
+  <div style="
+    width:100%;
+    background:white;
+    border:1px solid var(--line);
+  ">
+
+    <object
+      data="Natalia_Borrego_CV_2026.pdf#view=FitH"
+      type="application/pdf"
+      style="
+        display:block;
+        width:100%;
+        height:1600px;
+        border:0;
+      ">
+
+      <p style="padding:30px;">
+        Your browser cannot display the CV directly.
+        <a href="Natalia_Borrego_CV_2026.pdf">
+          Open the PDF here.
+        </a>
+      </p>
+
+    </object>
+
+  </div>
+
 </section>
+<!-- ================= END CV VIEWER ========================= -->
 </main>
 
 
