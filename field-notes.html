@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Field Notes | Natalia Borrego</title>
+  <meta name="description" content="Fieldwork, publications, student research, talks and public scholarship from Natalia Borrego.">
+
+  <!-- =========================================================
+       ALL STYLING FOR THIS PAGE IS INSIDE THIS FILE.
+       No extra CSS file is needed.
+       ========================================================= -->
+  <style>
+    :root{
+      --forest:#29483A;
+      --forest-deep:#20372D;
+      --ivory:#F6F2E9;
+      --paper:#FCFAF5;
+      --charcoal:#252824;
+      --ochre:#A8753E;
+      --muted:#6E716B;
+      --line:rgba(37,40,36,.16);
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--charcoal);
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.6;
+    }
+    a{color:inherit}
+    img{display:block;width:100%;object-fit:cover}
+
+    /* =========================================================
+       STYLE 01: UNDER-CONSTRUCTION BANNER
+       ========================================================= */
+    .site-notice{
+      background:var(--ochre);
+      color:white;
+      text-align:center;
+      padding:11px 18px;
+      font-size:.9rem;
+      font-weight:700;
+    }
+
+    /* =========================================================
+       STYLE 02: NAVIGATION
+       ========================================================= */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:18px max(28px,calc((100vw - var(--max))/2));
+      background:rgba(246,242,233,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:1.3rem;
+      font-weight:700;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    nav{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:700;
+    }
+    nav a:hover{color:var(--ochre)}
+
+    /* =========================================================
+       STYLE 03: PAGE INTRO
+       ========================================================= */
+    .feed-hero{
+      background:var(--forest-deep);
+      color:white;
+      padding:105px max(28px,calc((100vw - var(--max))/2)) 82px;
+    }
+    .feed-hero-inner{max-width:860px}
+    .eyebrow{
+      margin:0 0 14px;
+      font-size:.78rem;
+      letter-spacing:.16em;
+      font-weight:800;
+      text-transform:uppercase;
+      color:#D8CDB8;
+    }
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      line-height:1.08;
+    }
+    h1{
+      margin:0 0 20px;
+      font-size:clamp(3.5rem,8vw,7.2rem);
+      letter-spacing:-.04em;
+    }
+    .feed-hero p{
+      max-width:760px;
+      margin:0;
+      font-size:1.12rem;
+      color:rgba(255,255,255,.84);
+    }
+    .feed-credit{
+      margin-top:24px!important;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.22);
+      font-size:.9rem!important;
+      color:rgba(255,255,255,.72)!important;
+    }
+
+    /* =========================================================
+       STYLE 04: FILTER BUTTONS
+       ========================================================= */
+    .feed-controls{
+      position:sticky;
+      top:75px;
+      z-index:25;
+      background:rgba(252,250,245,.97);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .feed-controls-inner{
+      width:min(var(--max),calc(100% - 56px));
+      margin:0 auto;
+      padding:18px 0;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .filter-label{
+      margin-right:5px;
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .filter-button{
+      appearance:none;
+      border:1px solid var(--line);
+      background:white;
+      color:var(--charcoal);
+      padding:8px 11px;
+      cursor:pointer;
+      font:inherit;
+      font-size:.82rem;
+      font-weight:700;
+    }
+    .filter-button:hover,.filter-button.active{
+      background:var(--forest);
+      border-color:var(--forest);
+      color:white;
+    }
+
+    /* =========================================================
+       STYLE 05: SCROLLING FEED
+       ========================================================= */
+    .feed-layout{
+      width:min(980px,calc(100% - 56px));
+      margin:0 auto;
+      padding:80px 0 110px;
+      position:relative;
+    }
+    .feed-layout::before{
+      content:"";
+      position:absolute;
+      left:109px;
+      top:80px;
+      bottom:110px;
+      width:1px;
+      background:var(--line);
+    }
+    .feed-year{
+      margin:65px 0 30px;
+      padding-left:150px;
+      font-size:2.2rem;
+      color:var(--forest);
+    }
+    .feed-year:first-child{margin-top:0}
+    .feed-post{
+      position:relative;
+      display:grid;
+      grid-template-columns:110px minmax(0,1fr);
+      column-gap:40px;
+      margin-bottom:58px;
+    }
+    .feed-post[hidden]{display:none}
+    .feed-date{
+      position:relative;
+      padding-top:5px;
+      text-align:right;
+      color:var(--muted);
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .feed-date::after{
+      content:"";
+      position:absolute;
+      right:-47px;
+      top:12px;
+      width:13px;
+      height:13px;
+      border-radius:50%;
+      background:var(--ochre);
+      border:4px solid var(--paper);
+    }
+    .feed-card{
+      background:white;
+      border:1px solid var(--line);
+      overflow:hidden;
+    }
+    .feed-card img{
+      aspect-ratio:16/9;
+      object-fit:cover;
+    }
+    .feed-content{
+      padding:clamp(24px,4vw,42px);
+    }
+    .feed-meta{
+      margin:0 0 10px;
+      color:var(--forest);
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .feed-content h2{
+      margin:0 0 18px;
+      font-size:clamp(2rem,4vw,3.4rem);
+      letter-spacing:-.025em;
+    }
+    .feed-content p{max-width:760px}
+    .feed-link{
+      display:inline-block;
+      margin-top:10px;
+      color:var(--forest);
+      font-weight:800;
+      text-decoration:none;
+    }
+    .feed-link:hover{text-decoration:underline}
+    .tags{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:22px;
+    }
+    .tag{
+      padding:6px 9px;
+      background:var(--ivory);
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:.72rem;
+      font-weight:700;
+    }
+
+    /* =========================================================
+       STYLE 06: FOOTER
+       ========================================================= */
+    .home-link{
+      width:min(980px,calc(100% - 56px));
+      margin:0 auto;
+      padding-bottom:90px;
+    }
+    .button{
+      display:inline-block;
+      padding:12px 18px;
+      border:1px solid var(--forest);
+      color:var(--forest);
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:800;
+    }
+    footer{
+      padding:36px max(28px,calc((100vw - var(--max))/2));
+      background:var(--charcoal);
+      color:rgba(255,255,255,.72);
+      font-size:.82rem;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+    }
+    footer p{margin:0}
+
+    /* =========================================================
+       STYLE 07: MOBILE
+       ========================================================= */
+    @media(max-width:900px){
+      .site-header{align-items:flex-start;flex-direction:column}
+      nav{justify-content:flex-start;gap:14px 18px}
+      .feed-controls{position:static}
+      footer{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:720px){
+      .feed-layout{width:calc(100% - 36px)}
+      .feed-layout::before{display:none}
+      .feed-year{padding-left:0}
+      .feed-post{grid-template-columns:1fr;gap:9px}
+      .feed-date{text-align:left}
+      .feed-date::after{display:none}
+      .feed-controls-inner{width:calc(100% - 36px)}
+      .home-link{width:calc(100% - 36px)}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       SECTION 01: UNDER-CONSTRUCTION BANNER
+       Delete later when the site is finished.
+       ========================================================= -->
+  <div class="site-notice">
+    This website is currently under construction. Field Notes are being expanded and backfilled from recent years.
+  </div>
+  <!-- ================= END SECTION 01 ======================== -->
+
+
+  <!-- =========================================================
+       SECTION 02: NAVIGATION
+       ========================================================= -->
+  
+<header class="site-header">
+  <a class="brand" href="index.html">Natalia Borrego</a>
+  <nav aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a href="teaching-mentorship.html">Teaching &amp; Mentorship</a>
+    <a href="science-communication.html">Science Communication</a>
+    <a href="field-notes.html" aria-current="page">Field Notes</a>
+    <a href="cv.html">CV</a>
+  </nav>
+</header>
+
+  <!-- ================= END SECTION 02 ======================== -->
+
+
+  <!-- =========================================================
+       SECTION 03: FIELD NOTES INTRO
+       ========================================================= -->
+  <section class="feed-hero">
+    <div class="feed-hero-inner">
+      <p class="eyebrow">Research in motion</p>
+
+      <h1>Field Notes</h1>
+
+      <p>
+        A running archive of fieldwork, publications, student research, talks,
+        public scholarship, and the collaborations that make the work possible.
+        Newest updates appear first; scroll back through the history of the programme.
+      </p>
+
+      <p class="feed-credit">
+        Much of the lion research featured here comes from a comparative programme
+        that I jointly built and co-lead with long-term scientific and field partners
+        across Africa.
+        <a href="https://natalia-borrego.github.io/comparative-lion-research/"
+           target="_blank" rel="noopener">
+          Explore the collaborative research programme →
+        </a>
+      </p>
+    </div>
+  </section>
+  <!-- ================= END SECTION 03 ======================== -->
+
+
+  <!-- =========================================================
+       SECTION 04: FILTER BUTTONS
+       These work automatically.
+       ========================================================= -->
+  <div class="feed-controls">
+    <div class="feed-controls-inner">
+      <span class="filter-label">Show:</span>
+
+      <button class="filter-button active" data-filter="all">All</button>
+      <button class="filter-button" data-filter="fieldwork">Fieldwork</button>
+      <button class="filter-button" data-filter="publication">Publications</button>
+      <button class="filter-button" data-filter="student">Student Research</button>
+      <button class="filter-button" data-filter="talk">Talks &amp; Events</button>
+      <button class="filter-button" data-filter="media">Media &amp; Public Scholarship</button>
+    </div>
+  </div>
+  <!-- ================= END SECTION 04 ======================== -->
+
+
+  <!-- =========================================================
+       SECTION 05: SCROLLING FIELD NOTES FEED
+
+       NEWEST POSTS GO FIRST.
+
+       HOW TO ADD A NEW POST:
+       1. Scroll to the TEMPLATE near the bottom of this file.
+       2. Copy it.
+       3. Paste it below the correct YEAR heading and above older posts.
+       4. Edit the date/category/title/photo/text/link/tags.
+       ========================================================= -->
+  <main class="feed-layout">
+
+    <!-- ================= YEAR: 2026 ========================== -->
+    <h2 class="feed-year" data-year-heading="2026">2026</h2>
+
+
+    <!-- -------------------------------------------------------
+         FIELD NOTE: BEYOND THE SERENGETI
+         ------------------------------------------------------- -->
+    <article class="feed-post"
+             id="beyond-serengeti"
+             data-year="2026"
+             data-category="publication">
+
+      <div class="feed-date">2026</div>
+
+      <div class="feed-card">
+        <img src="assets/images/field-notes/2026-beyond-serengeti.jpg"
+             alt="Image for Beyond the Serengeti lion publication">
+
+        <div class="feed-content">
+          <p class="feed-meta">Publication</p>
+
+          <h2>Beyond the Serengeti lion</h2>
+
+          <p>
+            Our new paper in <em>Animal Behaviour</em> asks what we miss when
+            behavioral research relies too heavily on a small number of intensively
+            studied populations. By comparing lions across ecological contexts, we
+            argue for a more horizontal approach to understanding variation within species.
+          </p>
+
+          <p>
+            The paper grew from a collaborative effort to understand how the ecological
+            settings in which lions live shape the behaviors we observe—and the
+            conclusions we draw from them.
+          </p>
+
+          <a class="feed-link"
+             href="https://doi.org/10.1016/j.anbehav.2026.123562"
+             target="_blank"
+             rel="noopener">
+            Read the paper →
+          </a>
+
+          <div class="tags">
+            <span class="tag">Animal Behaviour</span>
+            <span class="tag">Comparative research</span>
+            <span class="tag">Lion behavior</span>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- ---------------- END FIELD NOTE ----------------------- -->
+
+<!-- -------------------------------------------------------
+         FIELD NOTE: CANDICE BAZIN
+         ------------------------------------------------------- -->
+    <article class="feed-post"
+             id="candice"
+             data-year="2026"
+             data-category="student">
+
+      <div class="feed-date">2026</div>
+
+      <div class="feed-card">
+        <img src="assets/images/field-notes/Candice.jpg"
+             alt="Candice Bazin presenting her MSc research">
+
+        <div class="feed-content">
+          <p class="feed-meta">Student milestone · MSc research</p>
+
+          <h2>Candice Bazin successfully defends her MSc thesis</h2>
+
+          <p>
+            MSc intern Candice Bazin successfully defended her thesis and earned
+            the highest thesis grade in her cohort.
+          </p>
+
+          <p>
+            Her research combined tracker reconstructions with biologging to
+            investigate fine-scale lion hunting behavior, using complementary
+            sources of evidence to ask what lions actually do during hunts rather
+            than treating movement paths as behavior by default.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Student research</span>
+            <span class="tag">MSc thesis</span>
+            <span class="tag">Hunting ecology</span>
+            <span class="tag">Mentorship</span>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- ---------------- END FIELD NOTE ----------------------- -->
+
+
+    <!-- ================= YEAR: 2025 ========================== -->
+    <h2 class="feed-year" data-year-heading="2025">2025</h2>
+
+
+    <article class="feed-post"
+             id="smithsonian"
+             data-year="2025"
+             data-category="media">
+
+      <div class="feed-date">2025</div>
+
+      <div class="feed-card">
+        <img src="assets/images/field-notes/2025-smithsonian.jpg"
+             alt="Image for Smithsonian Books chapter">
+
+        <div class="feed-content">
+          <p class="feed-meta">Public Scholarship</p>
+
+          <h2>The most charismatic of cats</h2>
+
+          <p>
+            I contributed the chapter “The Most Charismatic of Cats” to
+            <em>The Last Lions</em> from Smithsonian Books, bringing lion social
+            behavior and ecology to a broad public audience.
+          </p>
+
+          <p>
+            Public-facing writing is one way I try to connect the questions that
+            motivate field research with the wider fascination people have with
+            lions—and with animal societies more generally.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Smithsonian Books</span>
+            <span class="tag">Science writing</span>
+            <span class="tag">Lions</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <article class="feed-post"
+             id="leipzig-talk"
+             data-year="2025"
+             data-category="talk">
+
+      <div class="feed-date">2025</div>
+
+      <div class="feed-card">
+        <img src="assets/images/field-notes/2025-leipzig-talk.jpg"
+             alt="Image for invited talk in Leipzig">
+
+        <div class="feed-content">
+          <p class="feed-meta">Invited Talk</p>
+
+          <h2>Big Cats, Bigger Questions</h2>
+
+          <p>
+            At the Max Planck Institute for Evolutionary Anthropology in Leipzig,
+            I spoke about using big cats to connect proximate mechanisms of behavior
+            with broader ecological and evolutionary questions.
+          </p>
+
+          <p>
+            The central theme was one that continues to organize my research:
+            lions are compelling not because they are lions, but because their
+            flexible social system makes it possible to ask when different social
+            strategies emerge and why.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Invited talk</span>
+            <span class="tag">Behavioral ecology</span>
+            <span class="tag">Animal behavior</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ================= YEAR: 2024 ========================== -->
+    <h2 class="feed-year" data-year-heading="2024">2024</h2>
+
+
+    <article class="feed-post"
+             id="crossroads"
+             data-year="2024"
+             data-category="publication">
+
+      <div class="feed-date">2024</div>
+
+      <div class="feed-card">
+        <img src="assets/images/field-notes/2024-crossroads.jpg"
+             alt="Image for research integrating tracking and modern technology">
+
+        <div class="feed-content">
+          <p class="feed-meta">Publication · Field Methods</p>
+
+          <h2>At the crossroads of tradition and modern technology</h2>
+
+          <p>
+            Our paper in <em>Frontiers in Conservation Science</em> describes how
+            Indigenous tracking and modern sensing technologies can be combined to
+            study carnivores in low-density systems where direct observation is difficult.
+          </p>
+
+          <p>
+            The broader point is methodological but also conceptual: different forms
+            of knowledge reveal different parts of behavior. Tracking, biologging,
+            and direct observation become more powerful when they are treated as
+            complementary rather than competing approaches.
+          </p>
+
+          <a class="feed-link"
+             href="https://doi.org/10.3389/fcosc.2024.1402500"
+             target="_blank"
+             rel="noopener">
+            Read the paper →
+          </a>
+
+          <div class="tags">
+            <span class="tag">Indigenous tracking</span>
+            <span class="tag">Biologging</span>
+            <span class="tag">Field methods</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ================= YEAR: 2023 ========================== -->
+    <h2 class="feed-year" data-year-heading="2023">2023</h2>
+
+
+    <article class="feed-post"
+             id="sensory-collectives"
+             data-year="2023"
+             data-category="publication">
+
+      <div class="feed-date">2023</div>
+
+      <div class="feed-card">
+        <img src="assets/images/field-notes/2023-sensory-collectives.jpg"
+             alt="Image for Sensory Collectives publication">
+
+        <div class="feed-content">
+          <p class="feed-meta">Publication</p>
+
+          <h2>How groups sense the world</h2>
+
+          <p>
+            The <em>eLife</em> synthesis “Sensory collectives in natural systems”
+            asked how groups acquire, combine, and act on sensory information.
+          </p>
+
+          <p>
+            That framework helped sharpen a question now central to my work:
+            understanding collective behavior requires knowing not only where
+            animals move, but what information is available to them before they
+            make those movements.
+          </p>
+
+          <a class="feed-link"
+             href="https://doi.org/10.7554/eLife.88028"
+             target="_blank"
+             rel="noopener">
+            Read the paper →
+          </a>
+
+          <div class="tags">
+            <span class="tag">Sensory ecology</span>
+            <span class="tag">Collective behavior</span>
+            <span class="tag">eLife</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ================= YEAR: 2022 ========================== -->
+    <h2 class="feed-year" data-year-heading="2022">2022</h2>
+
+
+    <article class="feed-post"
+             id="oconnor"
+             data-year="2022"
+             data-category="student">
+
+      <div class="feed-date">2022</div>
+
+      <div class="feed-card">
+        <img src="assets/images/field-notes/2022-oconnor.jpg"
+             alt="Image for student-led research on innovation and behavioral flexibility">
+
+        <div class="feed-content">
+          <p class="feed-meta">Student Research · Publication</p>
+
+          <h2>From student project to publication</h2>
+
+          <p>
+            Victoria O'Connor's research on innovation and behavioral flexibility
+            in African lions and snow leopards developed from graduate research into
+            a peer-reviewed paper in <em>Behavioural Processes</em>.
+          </p>
+
+          <p>
+            It remains one of my favorite examples of what research mentorship can
+            become when a student owns a real biological question and follows it far
+            enough to contribute something new.
+          </p>
+
+          <a class="feed-link"
+             href="https://doi.org/10.1016/j.beproc.2022.104648"
+             target="_blank"
+             rel="noopener">
+            Read the paper →
+          </a>
+
+          <div class="tags">
+            <span class="tag">Student research</span>
+            <span class="tag">Animal cognition</span>
+            <span class="tag">Mentorship</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- =======================================================
+         COPY/PASTE TEMPLATE FOR YOUR NEXT FIELD NOTE
+
+         KEEP THIS COMMENTED OUT.
+
+         VALID data-category values:
+         fieldwork
+         publication
+         student
+         talk
+         media
+         ======================================================= -->
+
+    <!-- TEMPLATE START
+
+    <article class="feed-post"
+             id="SHORT-UNIQUE-ID"
+             data-year="2026"
+             data-category="fieldwork">
+
+      <div class="feed-date">MONTH 2026</div>
+
+      <div class="feed-card">
+        <img src="assets/images/field-notes/YOUR-IMAGE.jpg"
+             alt="DESCRIBE THE IMAGE">
+
+        <div class="feed-content">
+          <p class="feed-meta">CATEGORY</p>
+
+          <h2>YOUR TITLE</h2>
+
+          <p>FIRST SHORT PARAGRAPH.</p>
+
+          <p>SECOND SHORT PARAGRAPH.</p>
+
+          <a class="feed-link"
+             href="YOUR-LINK-HERE"
+             target="_blank"
+             rel="noopener">
+            LINK TEXT →
+          </a>
+
+          <div class="tags">
+            <span class="tag">TAG ONE</span>
+            <span class="tag">TAG TWO</span>
+            <span class="tag">TAG THREE</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    TEMPLATE END -->
+
+  </main>
+  <!-- ================= END SECTION 05 ======================== -->
+
+
+  <!-- =========================================================
+       SECTION 06: BACK TO HOMEPAGE
+       ========================================================= -->
+  <div class="home-link">
+    <a class="button" href="index.html">← Back to homepage</a>
+  </div>
+  <!-- ================= END SECTION 06 ======================== -->
+
+
+  <!-- =========================================================
+       SECTION 07: FOOTER
+       ========================================================= -->
+  <footer>
+    <p>© 2026 Natalia Borrego · Behavioral ecology · Wildlife ecology · Animal behavior</p>
+    <p>Field Notes · Research in motion</p>
+  </footer>
+  <!-- ================= END SECTION 07 ======================== -->
+
+
+  <!-- =========================================================
+       SECTION 08: FILTER SCRIPT
+       DO NOT EDIT unless we intentionally change the filters.
+       ========================================================= -->
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const posts = document.querySelectorAll(".feed-post");
+    const yearHeadings = document.querySelectorAll(".feed-year");
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        posts.forEach(post => {
+          const show = filter === "all" || post.dataset.category === filter;
+          post.hidden = !show;
+        });
+
+        yearHeadings.forEach(heading => {
+          const year = heading.dataset.yearHeading;
+          const visiblePosts = Array.from(posts).some(post =>
+            post.dataset.year === year && !post.hidden
+          );
+          heading.style.display = visiblePosts ? "" : "none";
+        });
+      });
+    });
+  </script>
+  <!-- ================= END SECTION 08 ======================== -->
+
+</body>
+</html>
