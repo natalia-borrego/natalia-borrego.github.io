@@ -174,12 +174,38 @@ nav a:hover,nav a[aria-current="page"]{color:var(--ochre)}
 .teaching-card{padding:28px;background:white;border:1px solid var(--line);border-top:3px solid var(--forest)}
 .teaching-card p{color:var(--charcoal)}
 
+
 /* Field notes preview */
 .notes-section{border-top:1px solid var(--line)}
 .notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .note-card{background:white;border:1px solid var(--line)}
+
+.publication-card-link{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+  height:100%;
+}
+
+.publication-card-link .note-card{
+  height:100%;
+  transition:box-shadow .2s ease, transform .2s ease;
+}
+
+.publication-card-link:hover .note-card{
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+
+.publication-read{
+  color:var(--forest);
+  font-weight:700;
+  margin-top:16px;
+}
+
 .note-card img{aspect-ratio:16/10}
 .note-card>div{padding:22px}
+
 .note-meta{
   margin:0 0 8px;font-size:.76rem;font-weight:800;letter-spacing:.12em;
   text-transform:uppercase;color:var(--forest)
@@ -471,17 +497,37 @@ footer p{margin:0}
   </div>
 
   <div class="notes-grid">
-    <article class="note-card">
-      <img src="assets/images/news-1.jpg" alt="Field Note image">
-      <div>
-        <p class="note-meta">2026 · Publication</p>
-        <h3>Beyond the Serengeti lion</h3>
-        <p>
-          A comparative perspective on what lion behavioral ecology looks like when research
-          expands beyond a small number of intensively studied populations.
-        </p>
-      </div>
-    </article>
+   
+<a
+  href="https://doi.org/10.1016/j.anbehav.2026.123562"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="publication-card-link"
+  aria-label="Read Beyond the Serengeti lion in Animal Behaviour"
+>
+  <article class="note-card">
+    <img
+      src="assets/images/news-1.jpg"
+      alt="Beyond the Serengeti lion publication"
+    >
+    <div>
+      <p class="note-meta">2026 · Open-access publication</p>
+
+      <h3>Beyond the Serengeti lion</h3>
+
+      <p>
+        A comparative perspective on what lion behavioral
+        ecology looks like when research expands beyond
+        a small number of intensively studied populations.
+      </p>
+
+      <p class="publication-read">
+        Read the open-access paper &rarr;
+      </p>
+    </div>
+  </article>
+</a>
+
 
     <article class="note-card">
       <img src="assets/images/Candice.jpg"
